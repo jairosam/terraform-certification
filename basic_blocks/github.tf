@@ -1,6 +1,4 @@
-provider "github" {
-  token = var.github_token
-}
+provider "github" {}
 
 resource "github_repository" "test-github-repo" {
   name        = "test-github-repo"
