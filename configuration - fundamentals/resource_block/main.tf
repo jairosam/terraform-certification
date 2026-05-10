@@ -1,8 +1,40 @@
 resource "azurerm_resource_group" "resource_group_1" {
   name     = "rg-resource-block-1"
   location = "eastus"
-	
+
   tags = { 
     "environment" = "test"
 	}
+}
+
+resource "azurerm_virtual_network" "virtual_network_1" {
+  name                = "vnet-resource-block-1"
+  location            = azurerm_resource_group.resource_group_1.location
+  resource_group_name = azurerm_resource_group.resource_group_1.name
+
+  address_space = ["10.40.0.0/22"]
+}
+
+resource "azurerm_subnet" "subnet_1" {
+  name                 = "subnet-resource-block-1"
+  resource_group_name  = azurerm_resource_group.resource_group_1.name
+  virtual_network_name = azurerm_virtual_network.virtual_network_1.name
+  address_prefixes     = ["10.40.0.0/26"]
+}
+
+data "azurerm_subnet" "subnet_created_manually" {
+	name = "subnet-created-manually"
+	resource_group_name  = azurerm_resource_group.resource_group_1.name
+	virtual_network_name = azurerm_virtual_network.virtual_network_1.name
+}
+
+resource "azurerm_network_security_group" "nsg_resource_block_1" {
+	name = "nsg-resource-block-1"
+	resource_group_name = azurerm_resource_group.resource_group_1.name
+	location = azurerm_resource_group.resource_group_1.location
+}
+
+resource "azurerm_subnet_network_security_group_association" "nsg_association" {
+	subnet_id = data.azurerm_subnet.subnet_created_manually.id
+	network_security_group_id = azurerm_network_security_group.nsg_resource_block_1.id
 }
