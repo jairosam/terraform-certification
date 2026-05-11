@@ -1,3 +1,18 @@
+## Terraform block defines
+## 1. Version of Terraform required to run the configuration
+## 2. Required providers and their versions
+## 3. Backend configuration (not covered in this lab)
+terraform {
+  required_version = "1.12.2"
+
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "~> 4.72.0"
+    }
+  }
+}
+
 resource "azurerm_resource_group" "resource_group_1" {
   name     = "rg-resource-${var.environment}-1"
   location = "eastus"
