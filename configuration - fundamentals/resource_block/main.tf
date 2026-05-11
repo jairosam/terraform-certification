@@ -2,6 +2,12 @@
 ## 1. Version of Terraform required to run the configuration
 ## 2. Required providers and their versions
 ## 3. Backend configuration (not covered in this lab)
+
+## Version constraints for Terraform and providers
+## = Only allow this specific version
+## >= Allow this version and any newer version
+## ~> Allow this version and any newer version that does not change the first non-zero digit (e.g. 1.2.3 allows 1.2.4 and 1.2.5 but not 1.3.0)
+
 terraform {
   required_version = "1.12.2"
 
