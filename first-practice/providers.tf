@@ -7,9 +7,9 @@ terraform {
     }
   }
   backend "azurerm" {
-    resource_group_name  = "terraform-course"
-    storage_account_name = "tfstate-terraformcourse"
-    container_name       = "tfstate-terraform"
+    resource_group_name  = "rg-terraform"
+    storage_account_name = "stacterraformcoursejairo"
+    container_name       = "tfstate2"
     key                  = "terraform.tfstate"
   }
 }
