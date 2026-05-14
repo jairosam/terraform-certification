@@ -20,5 +20,5 @@ variable "subnet_app_cidr" {
 variable "subnet_web_cidr" {
   description = "subnet web cidr"
   type        = string
-  default     = "192.90.2.0/24"
+  default     = "192.90.2.0/25"
 }
