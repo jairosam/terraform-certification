@@ -7,3 +7,4 @@ subnet_configuration = {
   "subnet_3" = "172.16.3.0/24"
 }
 project_name = "quality-infrastructure"
+storage_account_names = ["stactest1", "stactest2"]

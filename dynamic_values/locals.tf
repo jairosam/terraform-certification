@@ -7,5 +7,4 @@ locals {
     Subscription = data.azurerm_subscription.current.display_name
     TenantId     = data.azurerm_client_config.current.tenant_id
   }
-
 }

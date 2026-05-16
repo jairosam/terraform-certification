@@ -26,6 +26,12 @@ variable "subnet_configuration" {
   }
 }
 
+variable "storage_account_names" {
+	description = "names for storage accounts"
+	type        = set(string)
+	default     = ["storageaccount1testhcp004"]	
+}
+
 variable "project_name" {
   description = "Project name for resource tagging"
   type        = string

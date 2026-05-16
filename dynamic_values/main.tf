@@ -27,3 +27,20 @@ resource "azurerm_subnet" "subnets" {
   virtual_network_name = azurerm_virtual_network.virtual_network.name
   address_prefixes     = [each.value] # <-- update value here
 }
+
+resource "random_id" "suffix" {
+	for_each = var.storage_account_names
+	byte_length = 5
+}
+
+resource "azurerm_storage_account" "storage_accounts" {
+  for_each = var.storage_account_names
+
+  name                     = "${each.value}${random_id.suffix[each.key].hex}" # <-- update value here
+  resource_group_name      = azurerm_resource_group.resource_group.name
+  location                 = azurerm_resource_group.resource_group.location
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
+
+  tags = local.common_tags
+}
