@@ -1,11 +1,11 @@
 output "resource_group_id" {
   description = "ID of the created Resource Group"
-  value       = azurerm_resource_group.production.id
+  value       = azurerm_resource_group.resource_group.id
 }
 
 output "vnet_id" {
   description = "ID of the created Virtual Network"
-  value       = azurerm_virtual_network.production.id
+  value       = azurerm_virtual_network.virtual_network.id
 }
 
 output "subscription_info" {

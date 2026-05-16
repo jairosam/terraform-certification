@@ -16,10 +16,14 @@ variable "vnet_address_space" {
   default     = ["10.0.0.0/16"]
 }
 
-variable "subnet_prefix" {
-  description = "Address prefix for subnet"
-  type        = list(string)
-  default     = ["10.0.1.0/24"]
+variable "subnet_configuration" {
+  description = "Subnet address prefixes"
+  type        = map(string)
+  default = {
+    "subnet_1" = "10.0.1.0/24",
+    "subnet_2" = "10.0.2.0/24",
+    "subnet_3" = "10.0.3.0/24"
+  }
 }
 
 variable "project_name" {
