@@ -10,7 +10,7 @@ moved {
 }
 ```
 
-don't forget to remove the moved blocks from your code if they are no longer needed
+don't forget to delete moved blocks from your code if they are no longer needed
 
 ## Removed block
 
@@ -26,6 +26,8 @@ removed {
 	}
 }
 ```
+
+don't forget to delete removed blocks from your code if they are no longer needed
 
 ## Import block
 
