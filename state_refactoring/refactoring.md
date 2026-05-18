@@ -10,6 +10,8 @@ moved {
 }
 ```
 
+don't forget to remove the moved blocks from your code if they are no longer needed
+
 ## Removed block
 
 purpose: stop managing a resource but keep it running
