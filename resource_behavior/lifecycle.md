@@ -64,3 +64,19 @@ Validate resource state before/after operations
     ]
   }
 ```
+
+## Validation Mechanisms
+
+Validation Process:
+1. Variable validation
+2. Preconditions
+3. Postconditions
+4. Checks
+
+### 1. Variable validation
+
+It validates:
+* Input variables meet specific requirements
+* input values fall within acceptable ranges
+* prevent terraform operations if a variable is misconfigured
+* failure results is displaying the configured error_message, and stops the operation from proceeding

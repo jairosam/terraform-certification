@@ -5,6 +5,14 @@ resource "azurerm_resource_group" "rg-independent" {
     environment = "dev"
     project     = "terraform-labs"
   }
+
+  lifecycle {
+    postcondition {
+      condition     = location == "eastus"
+      error_message = "this is a postcondition"
+    }
+  }
+
 }
 
 resource "azurerm_resource_group" "rg-dependent" {
@@ -20,5 +28,9 @@ resource "azurerm_resource_group" "rg-dependent" {
   lifecycle {
     ignore_changes        = [tags]
     create_before_destroy = true
+    precondition {
+      condition     = contains(["eastus", "westus"], location)
+      error_message = "Resource group location must be eastus or westus"
+    }
   }
 }
