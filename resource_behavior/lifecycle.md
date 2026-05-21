@@ -80,3 +80,26 @@ It validates:
 * input values fall within acceptable ranges
 * prevent terraform operations if a variable is misconfigured
 * failure results is displaying the configured error_message, and stops the operation from proceeding
+
+### 4. Checks
+
+It validates:
+* Resources, data sources, variables, or outputs in your configuration
+* Behavior of your infrastructure as a whole
+* Infrastructure configuration without blocking operations
+* the checkblock executes as the last step of plan or apply, after terraform has planned or provisioned your infrastructure
+
+> It will NOT stop the deployment, it will let you know that the check has failed
+
+```
+check "web_health" {
+  data "http" "web_health_endpoint" {
+    url = "https://mysite.com/health"
+  }
+
+  assert {
+    condition = data.http.web_health_endpoint.status_code == 200
+    error_message = "Web Health returned an unsucessful response"
+  }
+}
+```

@@ -1,3 +1,5 @@
+data "azurerm_subscription" "current" {}
+
 resource "azurerm_resource_group" "rg-independent" {
   name     = "test-resource-group-independent"
   location = "eastus"
@@ -21,6 +23,7 @@ resource "azurerm_resource_group" "rg-dependent" {
   tags = {
     environment = "dev"
     project     = "terraform-labs"
+    subscription_id = data.azurerm_subscription.current.subscription_id
   }
 
   depends_on = [azurerm_resource_group.rg-independent]
